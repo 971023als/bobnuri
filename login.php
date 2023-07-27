@@ -4,7 +4,7 @@
 
     require('db.php');
     $stmt = $con->prepare("SELECT * FROM members WHERE id = ?");
-    $stmt->bind_param("s", $id);
+    $stmt->bind_param("s", $id); // 's' specifies the variable type => 'string'
 
     $stmt->execute();
 
@@ -27,13 +27,13 @@
  
         mysqli_close($con);
  
-        if(!password_verify($pass, $db_pass)) // use password_verify to check the password
+        if($pass != $db_pass)
         {
             echo("
                <script>
                  window.alert('비밀번호가 틀립니다!')
                  history.go(-1)
-               </script
+               </script>
             ");
             exit;
         }
@@ -48,7 +48,7 @@
             echo("
               <script>
                 location.href = 'index.php';
-              </script
+              </script>
             ");
         }
     }

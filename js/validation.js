@@ -116,31 +116,3 @@
          "left=700,top=300,width=350,height=200,scrollbars=no,resizable=yes");
          document.member_form.checked_id.value = "y";
        }
-document.querySelector('form').addEventListener('submit', function(event) {
-    var id = document.getElementById('id').value;
-    var pass = document.getElementById('pass').value;
-    var name = document.getElementById('name').value;
-    var email1 = document.getElementById('email1').value;
-    var email2 = document.getElementById('email2').value;
-    var email = email1 + "@" + email2;
-
-    // Name must be 6 characters or less
-    if (name.length > 6) {
-        alert("이름은 6자 미만로 입력해 주세요.");
-        event.preventDefault();
-    }
-
-    // Check if email is valid
-    var emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailFormat.test(email)) {
-        alert("이메일 형식이 올바르지 않습니다.");
-        event.preventDefault();
-    }
-
-    // Password validation: At least 8 characters, contains lower and uppercase letters, numbers, and special characters
-    var passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordFormat.test(pass)) {
-        alert("비밀번호는 최소 8자리, 특수문자, 대소문자를 포함해야 합니다!");
-        event.preventDefault();
-    }
-});
