@@ -1,0 +1,33 @@
+/* 게시판 글쓰기(product_form.php) */
+#product_box { position: relative; width: 800px; margin: 0 auto; }
+#product_box h3 { margin-top: 30px;	padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
+#product_form span { display: inline-block; }
+#product_form .col1 { width: 150px; }
+#product_form li {	padding: 12px; border-bottom: solid 1px #dddddd; }
+#product_form input { width: 500px; height: 25px; }
+#product_form textarea { width: 500px;	height: 135px; }
+#product_form #text_area {	position: relative;	height: 158px; }
+#product_form #text_area .col1 { position: absolute; top: 10px; }
+#product_form #text_area .col2 { position: absolute; left: 166px; }
+#product_box .buttons { text-align: right; margin: 20px 0 40px 0; }
+#product_box .buttons li { display: inline; }
+#product_box .buttons button { padding: 5px 10px; cursor: pointer; }
+/* 게시판 목록보기(product_list.php) */
+#product_list li { padding:10px 0; border-bottom: solid 1px #dddddd; }
+#product_list span { display: inline-block; vertical-align:-webkit-baseline-middle; text-align: center;}
+#product_list .col1 { width: 70px; }
+#product_list .col2 { width: 100px; }
+#product_list .col3 { width: 200px; }
+#product_list .col4 { width: 130px; }
+#product_list .col5 { width: 100px; }
+#product_list .col6 { width: 100px; }
+#product_list .col7 { width: 70px; }
+#page_num {	text-align: center;	margin: 30px 0 }
+#page_num li { display: inline; }
+/* 게시판 내용보기(product_view.php) */
+#product_box { width: 800px; margin: 0 auto; }
+#product_box .title { margin-top: 30px; padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
+#view_content li:nth-child(1) {	padding: 15px; border-bottom: solid 1px #aaaaaa; }
+#view_content .col2 { float: right; }
+#view_content li:nth-child(2) {	padding: 15px 15px 80px 15px; border-bottom: solid 1px #cccccc; }
+#view_content li:nth-child(3) button { padding: 5px 20px; margin: 15px 0 40px 720px; cursor: pointer; }

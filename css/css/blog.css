@@ -1,0 +1,15 @@
+table, th, td {
+    border: 1px solid #bcbcbc;
+    margin-left:auto;
+    margin-right:auto;
+    width: 200px;
+    height: 50px;
+  }
+.btn-like .heart-shape {
+    display: inline;
+    color: red;
+}
+.btn-like {
+    border: none;
+    background-color: inherit;
+}

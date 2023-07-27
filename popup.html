@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<style>
+    /* 이미지 크기를 조정하는 CSS 스타일 */
+    img {
+        max-width: 100%; /* 이미지의 최대 너비를 부모 요소(팝업 창)의 100%로 설정 */
+        max-height: 100%; /* 이미지의 최대 높이를 부모 요소(팝업 창)의 100%로 설정 */
+        display: block; /* 이미지를 블록 수준 요소로 설정하여 가로 중앙 정렬 */
+        margin: 0 auto; /* 가로 중앙 정렬을 위해 왼쪽/오른쪽 여백을 자동으로 설정 */
+    }
+</style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="maincss.css" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<html>
+<head>
+    <title>팝업 내용</title>
+</head>
+<body>
+    <img src="./img/banner.jpg" alt="팝업 이미지">
+    <div style="padding:0 10px;height:30px;font-size:11px;color:#333;text-align:RIGHT;line-height:30px;background:#eee;">
+        <input name="viewCheckbox" type="checkbox" id="viewCheckbox" value="checkbox">
+        <label for="viewCheckbox">1일 동안 다시 열지않음</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:self.close();" style="display:inline-block;padding:5px;color:#fff;line-height:100%;vertical-align:middle;background:#333;"> 창닫기</a>
+    </div>
+</body>
+</html>
