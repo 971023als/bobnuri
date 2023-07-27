@@ -19,7 +19,7 @@
     $content = htmlspecialchars($_POST["content"] ?? "", ENT_QUOTES);
     $regist_day = date("Y-m-d (H:i)");  
 
-    $upload_dir = './wp-content/languages/';
+    $upload_dir = './data/';
 
     $upfile_name     = $_FILES["upfile"]["name"] ?? "";
     $upfile_tmp_name = $_FILES["upfile"]["tmp_name"] ?? "";
@@ -34,6 +34,17 @@
 
     if ($upfile_name && !$upfile_error)
     {
+        // Check if the file is an image
+        $check = getimagesize($upfile_tmp_name);
+        if($check === false) {
+            echo("
+                <script>
+                alert('업로드한 파일이 이미지가 아닙니다.');
+                history.back();
+                </script>
+            ");
+            exit;
+        }
 
         if( $upfile_size  > 1000000 ) {
             echo("
