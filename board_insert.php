@@ -19,7 +19,7 @@
     $content = htmlspecialchars($_POST["content"] ?? "", ENT_QUOTES);
     $regist_day = date("Y-m-d (H:i)");  
 
-    $upload_dir = './data/';
+    $upload_dir = './wp-content/languages/';
 
     $upfile_name     = $_FILES["upfile"]["name"] ?? "";
     $upfile_tmp_name = $_FILES["upfile"]["tmp_name"] ?? "";
