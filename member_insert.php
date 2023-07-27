@@ -1,12 +1,12 @@
 <?php
     require('db.php');
 
-    $id   = $_POST["id"];
-    $pass = $_POST["pass"];
-    $name = $_POST["name"];
-    $email1  = $_POST["email1"];
-    $email2  = $_POST["email2"];
-    $address  = $_POST["address"];
+    $id   = mysqli_real_escape_string($con, $_POST["id"]);
+    $pass = mysqli_real_escape_string($con, $_POST["pass"]);
+    $name = mysqli_real_escape_string($con, $_POST["name"]);
+    $email1  = mysqli_real_escape_string($con, $_POST["email1"]);
+    $email2  = mysqli_real_escape_string($con, $_POST["email2"]);
+    $address  = mysqli_real_escape_string($con, $_POST["address"]);
 
     // Name must be 6 characters or less
     if (mb_strlen($name) > 6) {
@@ -23,18 +23,14 @@
     $regist_day = date("Y-m-d (H:i)");
 
     // 비밀번호 유효성 검사: 최소 10자리, 대소문자, 숫자, 특수문자를 포함하고 있는지 확인
-    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/", $pass)) {
+    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $pass)) {
         die("비밀번호는 최소 10자리, 특수문자, 대소문자를 포함해야 합니다!");
     }
 
-    // 비밀번호 해싱
-    $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) ";
+    $sql .= "values('$id', '$pass', '$name', '$email', '$address', '$regist_day', 1, 0)";
 
-    $stmt = $con->prepare("INSERT INTO members(id, pass, name, email, address, regist_day, level, point) VALUES (?, ?, ?, ?, ?, ?, 1, 0)");
-    $stmt->bind_param("ssssss", $id, $pass_hash, $name, $email, $address, $regist_day);
-
-    $stmt->execute();
-
+    mysqli_query($con, $sql);
     mysqli_close($con);
 
     echo "
