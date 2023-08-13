@@ -1,5 +1,4 @@
 <?php
-    session_start();  // 세션 시작
 
     $real_name = $_GET["real_name"];
     $file_name = $_GET["file_name"];
