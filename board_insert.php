@@ -34,27 +34,7 @@
 
     if ($upfile_name && !$upfile_error)
     {
-        // Check if the file is an image
-        $check = getimagesize($upfile_tmp_name);
-        if($check === false) {
-            echo("
-                <script>
-                alert('업로드한 파일이 이미지가 아닙니다.');
-                history.back();
-                </script>
-            ");
-            exit;
-        }
-
-        if( $upfile_size  > 1000000 ) {
-            echo("
-            <script>
-            alert('업로드 파일 크기가 지정된 용량(1MB)을 초과합니다!<br>파일 크기를 체크해주세요! ');
-            history.back();
-            </script>
-            ");
-            exit;
-        }
+        
 
         if (!move_uploaded_file($upfile_tmp_name, $uploaded_file) )
         {
