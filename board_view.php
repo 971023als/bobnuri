@@ -57,21 +57,16 @@ if (!isset($_SESSION['viewed_'.$num])) {
             <li>
             <?php
                if($file_name) {
-                $real_name = $file_copied;
-                $file_path = "./data/".$real_name;
-                $file_size = filesize($file_path);
-            
-                echo "▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
-            
-                if(file_exists($file_path)) {
-                    echo "<img src='./data/$real_name' alt='Attached Image'><br><br><br>";
-                } else {
-                    echo "이미지를 찾을 수 없습니다.<br><br><br>";
-                }
-            }
-            
-            ?>
+                  $real_name = $file_copied;
+                  $file_path = "./data/".$real_name;
+                  $file_size = filesize($file_path);
+
+                  echo "▷ 첨부파일 : $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
+                       }
+
+                  echo "<img src='./data/$file_copied'><br><br><br>";
+                  ?>
                 <?=$content?>
             </li>       
         </ul>

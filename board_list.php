@@ -70,7 +70,7 @@
 						$real_name = $file_copied; 
 						$file_path = "./data/".$real_name; 
 						$file_size = filesize($file_path);
-					echo "<a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>저장</a>";
+					echo "<a href='board_download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a>";
                        }
 					?>
 				</span>

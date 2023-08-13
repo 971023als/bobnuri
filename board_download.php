@@ -15,20 +15,19 @@
          $file_name = iconv('utf-8', 'euc-kr', $file_name);
     }
 
-
     if( file_exists($file_path) )
     { 
-        $fp = fopen($file_path,"rb"); 
-        Header("Content-type: application/x-msdownload"); 
+		$fp = fopen($file_path,"rb"); 
+		Header("Content-type: application/x-msdownload"); 
         Header("Content-Length: ".filesize($file_path));     
         Header("Content-Disposition: attachment; filename=".$file_name);   
         Header("Content-Transfer-Encoding: binary"); 
-        Header("Content-Description: File Transfer"); 
+		Header("Content-Description: File Transfer"); 
         Header("Expires: 0");       
     } 
-    
+	
     if(!fpassthru($fp)) 
-        fclose($fp); 
+		fclose($fp); 
 ?>
 
 
