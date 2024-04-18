@@ -86,7 +86,7 @@
         $param_file_copied = $copied_file_name;
 
         if(mysqli_stmt_execute($stmt)){
-            echo "Records inserted successfully.";
+            echo "mysql 쿼리 성공.";
         } else{
             echo "ERROR: Could not execute query: $sql. " . mysqli_error($con);
         }
