@@ -17,7 +17,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><a href="index.php">BoB누리 진흥공단</a></title>
+    <title>BoB누리 진흥공단</a></title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -197,45 +197,6 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="/index.php"><img src="img/bob.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="/index.php">Home</a></li>
-                            <li><a href="blog.php">인사말</a></li>
-                            <li><a href="bobnuri.php">조직도</a></li>
-                            <li><a href="message_form.php">메시지</a></li>
-                            <li><a href="#">서비스</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="board_form.php">민원등록</a></li>
-                                    <li><a href="board_list.php">민원목록</a></li>
-                                    <li><a href="oneday_class_index.php">원데이클래스</a></li>
-                                    <li><a href="point_mall_index.php">상품권</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                        <p><a href="pri.php" ></i>개인정보처리방침</a></p>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
         <!--
         <div class="container">
             <div class="row">
@@ -311,27 +272,33 @@
     </div>
     !-->
 
-    <div class="boblogo">
-        
-    </div>
-
     <hr class="hz" style="height: 2px;">
 
     <div class="menu">
-        <div class="button1">
-            <button type="button" onclick="location.href='point_mall_index.php'"><b>상품권</b></button>
+        <div class="col-lg-3">
+            <div class="header__container">
+                    <div class="header__logo">
+                        <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
+                    </div>
+            </div>
         </div>
         <div class="button2">
-            <button type="button" onclick="location.href='oneday_class_index.php'"><b>원데이클래스</b></button>
+            <button type="button" onclick="location.href='point_mall_index.php'"><b>상품권</b></button>
         </div>
         <div class="button3">
-            <button type="button" onclick="location.href='message_form.php'"><b>문의</b></button>
+            <button type="button" onclick="location.href='oneday_class_index.php'"><b>원데이클래스</b></button>
         </div>
         <div class="button4">
-            <button type="button" onclick="location.href='bobnuri.php'"><b>조직도</b></button>
+            <button type="button" onclick="location.href='message_form.php'"><b>문의</b></button>
         </div>
         <div class="button5">
+            <button type="button" onclick="location.href='bobnuri.php'"><b>조직도</b></button>
+        </div>
+        <div class="button6">
             <button type="button" onclick="location.href='blog.php'"><b>공단소개</b></button>
+        </div>
+        <div class="button6">
+            <button type="button" onclick="location.href='pri.php'"><b>개인정보처리방침</b></button>
         </div>
     </div>
 
