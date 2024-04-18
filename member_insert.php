@@ -30,7 +30,11 @@
     $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) ";
     $sql .= "values('$id', '$pass', '$name', '$email', '$address', '$regist_day', 1, 0)";
 
-    mysqli_query($con, $sql);
+    $result = mysqli_query($con, $sql);
+    if (!$result) {
+        die('SQL 쿼리 실행에 실패했습니다: ' . mysqli_error($con));
+    }
+
     mysqli_close($con);
 
     echo "
@@ -39,11 +43,3 @@
           </script>
       ";
 ?>
-
-
-
-
-
-
-
-
