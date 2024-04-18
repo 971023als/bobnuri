@@ -239,10 +239,6 @@
         </div>
     </header>
     !-->
-
-    <header class="header" >
-
-    <!-- 상단바 !-->
     
     <!-- 로고 및 검색창 !-->
 
@@ -276,8 +272,6 @@
         </div>
     </div>
     !-->
-
-</header>
 
     <div class="boblogo">
         
