@@ -204,6 +204,25 @@
                         <a href="/index.php"><img src="img/bob.png" alt=""></a>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/index.php">Home</a></li>
+                            <li><a href="blog.php">인사말</a></li>
+                            <li><a href="bobnuri.php">조직도</a></li>
+                            <li><a href="message_form.php">메시지</a></li>
+                            <li><a href="#">서비스</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="board_form.php">민원등록</a></li>
+                                    <li><a href="board_list.php">민원목록</a></li>
+                                    <li><a href="oneday_class_index.php">원데이클래스</a></li>
+                                    <li><a href="point_mall_index.php">상품권</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </nav>
+                </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -217,7 +236,6 @@
             </div>
         </div>
     </header>
-    !-->
         <!--
         <div class="container">
             <div class="row">
