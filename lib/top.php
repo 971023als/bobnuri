@@ -243,11 +243,6 @@
     <header class="header" >
 
     <!-- 상단바 !-->
-    <div style="width: 100%; height: 30px; background-color: #002B51;">
-        <div>
-            <p style="color: white;">테스트 중입니다.</p>
-        </div>
-    </div>
     
     <!-- 로고 및 검색창 !-->
 
