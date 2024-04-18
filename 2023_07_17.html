@@ -11,17 +11,17 @@
 </head>
 <body>
     <form action="pri.php" method="post">
-        <button type="submit" name="content" value="content1">Content 1</button>
-        <button type="submit" name="content" value="content2">Content 2</button>
+        <button type="submit" name="content" value="content1">2023_07_17</button>
+        <button type="submit" name="content" value="content2">2023_04_19</button>
     </form>
     
     <?php
         if (isset($_POST['content'])) {
             $content = $_POST['content'];
             if ($content == 'content1') {
-                include("2023_07_17.html");
+                include('2023_07_17.html');
             } elseif ($content == 'content2') {
-                include("2024_04_19.html");
+                include('2024_04_19.html');
             }
         }
     ?>
