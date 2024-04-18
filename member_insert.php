@@ -23,10 +23,10 @@
     $regist_day = date("Y-m-d (H:i)");
 
     // 비밀번호 유효성 검사: 최소 10자리, 대소문자, 숫자, 특수문자를 포함하고 있는지 확인
-    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $pass)) {
+    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{10,}$/", $pass)) {
         die("비밀번호는 최소 10자리, 특수문자, 대소문자를 포함해야 합니다!");
     }
-
+    
     $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) ";
     $sql .= "values('$id', '$pass', '$name', '$email', '$address', '$regist_day', 1, 0)";
 
