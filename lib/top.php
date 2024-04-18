@@ -47,13 +47,7 @@
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
             <a href="#"><img src="img/bob.png"></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-            <p><a href="pri.php" ></i>개인정보처리방침</a></p>
-            </ul>
-        </div>
-                  
+        </div>             
         <?php
 
     $logged = ""; // $logged 변수 초기화    
@@ -75,6 +69,7 @@
                         <li><a><?=$logged?></a> </li>
                           <li><a href="logout.php">로그아웃</a> </li>
                           <li><a href="member_modify_form.php">정보 수정</a></li>
+                          <li><a href="pri.php" ></i>개인정보처리방침</a></li>
 <?php
 	if (isset($_GET["page"]))
 		$page = $_GET["page"];
@@ -193,6 +188,7 @@
 ?>     
             <li><a href="/member_form.php"></i> 회원가입</a>
             <li><a href="/login_form.php"></i> 로그인</a></li>
+            <li><a href="pri.php" ></i>개인정보처리방침</a></li>
             <?php
     } else {
                 $logged = $username."(".$userid.")님[Level:".$userlevel.", Point:".$userpoint."]";
@@ -200,6 +196,7 @@
                 <li><?=$logged?></li>
                 <li><a href="logout.php" ></i>로그아웃</a></li>
                 <li><a href="member_modify_form.php" ></i>정보수정</a></li>
+                <li><a href="pri.php" ></i>개인정보처리방침</a></li>
                 <?php
     } 
 ?>
@@ -299,9 +296,6 @@
         </div>
         <div class="button5">
             <button type="button" onclick="location.href='blog.php'"><b>공단소개</b></button>
-        </div>
-        <div class="button6">
-            <button type="button" onclick="location.href='pri.php'"><b>개인정보처리방침</b></button>
         </div>
     </div>
 
