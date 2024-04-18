@@ -17,7 +17,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BoB누리 진흥공단</title>
+    <title><a href="index.php">BoB누리 진흥공단</a></title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -197,7 +197,27 @@
                 </div>
             </div>
         </div>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="/index.php"><img src="img/bob.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                        <p><a href="pri.php" ></i>개인정보처리방침</a></p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    !-->
         <!--
         <div class="container">
             <div class="row">
