@@ -10,30 +10,6 @@
     <link rel="stylesheet" href="./css/privacy-policy.css">
 </head>
 <body>
-    <form action="pri.php" method="post">
-        <button type="submit" name="content" value="content1">2023_07_17</button>
-        <button type="submit" name="content" value="content2">2024_04_19</button>
-    </form>
-    
-    <?php
-        if (isset($_POST['content'])) {
-            $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
-            switch ($content) {
-                case 'content1':
-                    include("2023_07_17.html");
-                    break;
-                case 'content2':
-                    include("2024_04_19.html");
-                    break;
-                default:
-                    echo "Invalid content selected!";
-                    break;
-            }
-        }
-    ?>
-    
-    
-    
     <h3 style="text-align: center; color: #515252">목차</h3>
     <p style="text-align: center; color: #515252">※ 위의 항목을 클릭하며 해당페이지로 이동합니다.</p>
     <div class="button-container">
