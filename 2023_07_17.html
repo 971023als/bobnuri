@@ -11,17 +11,13 @@
 </head>
 <body>
     <form action="pri.php" method="post">
-        <button type="submit" name="content" value="content1">Content 1</button>
-        <button type="submit" name="content" value="content2">Content 2</button>
+        <button type="submit" name="content" value="content1">2023_07_17</button>
+        <button type="submit" name="content" value="content2">2024_04_19</button>
     </form>
     
     <?php
-        // Check if 'content' was posted
         if (isset($_POST['content'])) {
-            // Sanitize the input to prevent path traversal vulnerabilities
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
-    
-            // Determine which content to include based on the sanitized input
             switch ($content) {
                 case 'content1':
                     include("2023_07_17.html");
@@ -30,12 +26,12 @@
                     include("2024_04_19.html");
                     break;
                 default:
-                    // Optional: handle unexpected content values
                     echo "Invalid content selected!";
                     break;
             }
         }
     ?>
+    
     
     
     <h3 style="text-align: center; color: #515252">목차</h3>
