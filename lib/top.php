@@ -150,7 +150,7 @@
             </ul>
             <div class="header__container">
                     <div class="header__logo">
-                        <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
+                        <a href="index.php"><img src="img/bob.png" alt=""></a>
                     </div>
             </div>
         </div>
@@ -170,7 +170,7 @@
                             </ul>
                             <div class="header__container">
                                  <div class="header__logo">
-                                    <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
+                                    <a href="index.php"><img src="img/bob.png" alt=""></a>
                                 </div>
                             </div>
                         </div>
