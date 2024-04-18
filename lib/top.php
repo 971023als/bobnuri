@@ -17,7 +17,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BoB누리 진흥공단</a></title>
+    <title>BoB누리 진흥공단</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -153,6 +153,13 @@
                 <li><i class="fa fa-envelope"></i> BoBnuri@BoBnuri.ac.kr</li>
                 <li>BoB누리 진흥공단</li>
             </ul>
+            <div class="col-lg-3">
+            <div class="header__container">
+                    <div class="header__logo">
+                        <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
+                    </div>
+            </div>
+        </div>
         </div>
     </div>
     <!-- Humberger End -->
@@ -168,6 +175,13 @@
                                 <li><i class="fa fa-envelope"></i> BoBnuri@BoBnuri.ac.kr</li>
                                 <li>BoB누리 진흥공단</li>
                             </ul>
+                            <div class="col-lg-3">
+                            <div class="header__container">
+                                 <div class="header__logo">
+                                    <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -275,26 +289,19 @@
     <hr class="hz" style="height: 2px;">
 
     <div class="menu">
-        <div class="col-lg-3">
-            <div class="header__container">
-                    <div class="header__logo">
-                        <a href="/test/index.php"><img src="img/bob.png" alt=""></a>
-                    </div>
-            </div>
-        </div>
-        <div class="button2">
+        <div class="button1">
             <button type="button" onclick="location.href='point_mall_index.php'"><b>상품권</b></button>
         </div>
-        <div class="button3">
+        <div class="button2">
             <button type="button" onclick="location.href='oneday_class_index.php'"><b>원데이클래스</b></button>
         </div>
-        <div class="button4">
+        <div class="button3">
             <button type="button" onclick="location.href='message_form.php'"><b>문의</b></button>
         </div>
-        <div class="button5">
+        <div class="button4">
             <button type="button" onclick="location.href='bobnuri.php'"><b>조직도</b></button>
         </div>
-        <div class="button6">
+        <div class="button5">
             <button type="button" onclick="location.href='blog.php'"><b>공단소개</b></button>
         </div>
         <div class="button6">
