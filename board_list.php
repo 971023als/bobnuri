@@ -47,8 +47,8 @@
       // 하나의 레코드 가져오기
 	  $num         = $row["num"];
 	  $id          = $row["id"];
-	  $name        = $row["name"];
-	  $subject     = $row["subject"];
+	  $name        = xss_check($row["name"]);
+	  $subject     = xss_check($row["subject"]);
       $regist_day  = $row["regist_day"];
 	  $file_name    = $row["file_name"];
 	  $file_type    = $row["file_type"];

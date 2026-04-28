@@ -4,51 +4,55 @@
         session_start();
     }
 
-    require('db.php');
-
     $userid = $_SESSION["userid"] ?? "";
-    $username = $_SESSION["username"] ?? "";
-    $comment_id = $_GET['nums'] ?? "";
-    $board_num = $_GET['num'] ?? "";
-    $page = $_GET['page'] ?? "1";
+    $num = $_GET["num"] ?? "";
+    $page = $_GET["page"] ?? "1";
 
     if (!$userid) {
         die("<script>alert('로그인 후 이용해 주세요!'); history.go(-1);</script>");
     }
 
+    require('db.php');
     $level = get_security_level();
 
-    // Ownership check only for Level 4+
+    // Check ownership only for Level 4+
     if ($level >= 4) {
-        $sql = "SELECT post_name FROM comments WHERE nums = ?";
+        $sql = "SELECT id FROM board WHERE num = ?";
         $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $comment_id);
+        mysqli_stmt_bind_param($stmt, "i", $num);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_array($result);
         
-        if (!$row || $row['post_name'] !== $username) {
+        if (!$row || $row['id'] !== $userid) {
             die("<script>alert('삭제 권한이 없습니다!'); history.go(-1);</script>");
         }
     }
 
     if ($level <= 1) {
-        // Level 1: Vulnerable SQL
-        $sql = "DELETE FROM comments WHERE nums = $comment_id";
+        // Level 1: Vulnerable to SQL Injection and IDOR
+        $sql = "DELETE FROM board WHERE num = $num";
         $result = mysqli_query($con, $sql);
     } elseif ($level <= 3) {
-        // Level 2/3: Escaping
-        $id_esc = mysqli_real_escape_string($con, $comment_id);
-        $sql = "DELETE FROM comments WHERE nums = $id_esc";
+        // Level 2/3: Basic Escaping (Still vulnerable to IDOR)
+        $num_esc = mysqli_real_escape_string($con, $num);
+        $sql = "DELETE FROM board WHERE num = $num_esc";
         $result = mysqli_query($con, $sql);
     } else {
-        // Level 4/5: Prepared
-        $sql = "DELETE FROM comments WHERE nums = ?";
+        // Level 4/5: Prepared Statements & Ownership check
+        $sql = "DELETE FROM board WHERE num = ?";
         $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $comment_id);
+        mysqli_stmt_bind_param($stmt, "i", $num);
         $result = mysqli_stmt_execute($stmt);
     }
 
+    if (!$result) die("삭제 실패: " . mysqli_error($con));
+
     mysqli_close($con);
-    echo "<script>alert('삭제되었습니다.'); location.href='board_view.php?num={$board_num}&page={$page}';</script>";
+
+    echo "
+         <script>
+             location.href = 'board_list.php?page=$page';
+         </script>
+       ";
 ?>

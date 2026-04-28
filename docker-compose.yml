@@ -1,31 +1,50 @@
 version: '3.8'
 
 services:
+  # 1. Reverse Proxy (Single Entry Point)
+  apache-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.apache
+    container_name: apache_proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  # 2. PHP Web Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bobnuri_app
+    restart: unless-stopped
+    expose:
+      - "80"  # Open only to internal network
+    environment:
+      - DB_HOST=db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - SECURITY_LEVEL=${SECURITY_LEVEL}
+    depends_on:
+      - db
+
+  # 3. MySQL Database
   db:
     image: mysql:8.0
     container_name: bobnuri_db
-    restart: always
+    restart: unless-stopped
     environment:
-      MYSQL_DATABASE: sample
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_USER: BoBnuri
-      MYSQL_PASSWORD: nuriBoB1234!
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "3306:3306"
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    # ports: # Removed for security. Access only via 'app' container.
 
-  app:
-    build: .
-    container_name: bobnuri_app
-    restart: always
-    ports:
-      - "8080:80"
-    environment:
-      - DB_HOST=db
-      - DB_USER=BoBnuri
-      - DB_PASSWORD=nuriBoB1234!
-      - DB_NAME=sample
-      - SECURITY_LEVEL=1 # Options: 1 to 5
-    depends_on:
-      - db
+volumes:
+  mysql_data:

@@ -1,2 +1,4 @@
-
+.env
+*.log
+mysql_data/
 php

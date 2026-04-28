@@ -8,38 +8,60 @@ require('lib/copy.php');
 <link rel="stylesheet" type="text/css" href="./css/board.css">
 
 <?php
-
 require('db.php');
+require_once('security_config.php');
 
-$num  = filter_var($_GET["num"], FILTER_SANITIZE_NUMBER_INT);
-$page  = filter_var($_GET["page"], FILTER_SANITIZE_NUMBER_INT);
+$num = $_GET["num"] ?? "";
+$page = $_GET["page"] ?? "1";
+$level = get_security_level();
 
-$stmt = $con->prepare("SELECT * FROM board WHERE num = ?");
-$stmt->bind_param('i', $num);
+if ($level <= 1) {
+    // Level 1: Vulnerable to SQL Injection
+    $sql = "SELECT * FROM board WHERE num = $num";
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($result);
+} elseif ($level <= 3) {
+    // Level 2/3: Basic Escaping
+    $num_esc = mysqli_real_escape_string($con, $num);
+    $sql = "SELECT * FROM board WHERE num = $num_esc";
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($result);
+} else {
+    // Level 4/5: Prepared Statements
+    $sql = "SELECT * FROM board WHERE num = ?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $num);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_array($result);
+}
 
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
+if (!$row) {
+    die("<script>alert('존재하지 않는 게시글입니다.'); history.go(-1);</script>");
+}
 
-$id      = $row["id"];
-$name      = $row["name"];
+$id = $row["id"];
+$name = xss_check($row["name"]);
 $regist_day = $row["regist_day"];
-$subject    = $row["subject"];
-$content    = $row["content"];
-$file_name    = $row["file_name"];
-$file_type    = $row["file_type"];
-$file_copied  = $row["file_copied"];
-$hit          = $row["hit"];
+$subject = xss_check($row["subject"]);
+$content = xss_check($row["content"]);
+$file_name = $row["file_name"];
+$file_type = $row["file_type"];
+$file_copied = $row["file_copied"];
+$hit = $row["hit"];
 
 $content = str_replace(" ", "&nbsp;", $content);
 $content = str_replace("\n", "<br>", $content);
 
 if (!isset($_SESSION['viewed_'.$num])) {
     $new_hit = $hit + 1;
-    $stmt = $con->prepare("UPDATE board SET hit = ? WHERE num = ?");
-    $stmt->bind_param('ii', $new_hit, $num);
-    $stmt->execute();
-
+    if ($level >= 4) {
+        $stmt = mysqli_prepare($con, "UPDATE board SET hit = ? WHERE num = ?");
+        mysqli_stmt_bind_param($stmt, 'ii', $new_hit, $num);
+        mysqli_stmt_execute($stmt);
+    } else {
+        mysqli_query($con, "UPDATE board SET hit = $new_hit WHERE num = $num");
+    }
     $_SESSION['viewed_'.$num] = true;
 }
 ?>

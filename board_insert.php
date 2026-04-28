@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    require_once('security_config.php');
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $userid = $_SESSION["userid"] ?? "";
     $username = $_SESSION["username"] ?? "";
@@ -15,8 +18,17 @@
         exit;
     }
 
-    $subject = htmlspecialchars($_POST["subject"] ?? "", ENT_QUOTES);
-    $content = htmlspecialchars($_POST["content"] ?? "", ENT_QUOTES);
+    $subject = $_POST["subject"] ?? "";
+    $content = $_POST["content"] ?? "";
+    
+    $level = get_security_level();
+
+    // XSS Protection only for Level 5
+    if (is_level5()) {
+        $subject = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
+        $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+    }
+
     $regist_day = date("Y-m-d (H:i)");  
 
     $upload_dir = './data/';
@@ -34,8 +46,6 @@
 
     if ($upfile_name && !$upfile_error)
     {
-        
-
         if (!move_uploaded_file($upfile_tmp_name, $uploaded_file) )
         {
             echo("
@@ -60,56 +70,48 @@
         }
 
         $upfile_name      = "";
-        $upfile_type      = "";
         $copied_file_name = "";
     }
 
     require('db.php');
 
-    if($con === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
+    if ($level <= 1) {
+        // Level 1: Vulnerable to SQL Injection
+        $sql = "INSERT INTO board (id, name, subject, content, regist_day, hit, file_name, file_type, file_copied) ";
+        $sql .= "VALUES ('$userid', '$username', '$subject', '$content', '$regist_day', 0, '$upfile_name', '$file_ext', '$copied_file_name')";
+        $result = mysqli_query($con, $sql);
+    } elseif ($level <= 3) {
+        // Level 2/3: Basic Escaping
+        $id_esc = mysqli_real_escape_string($con, $userid);
+        $name_esc = mysqli_real_escape_string($con, $username);
+        $subject_esc = mysqli_real_escape_string($con, $subject);
+        $content_esc = mysqli_real_escape_string($con, $content);
+        $sql = "INSERT INTO board (id, name, subject, content, regist_day, hit, file_name, file_type, file_copied) ";
+        $sql .= "VALUES ('$id_esc', '$name_esc', '$subject_esc', '$content_esc', '$regist_day', 0, '$upfile_name', '$file_ext', '$copied_file_name')";
+        $result = mysqli_query($con, $sql);
+    } else {
+        // Level 4/5: Prepared Statements
+        $sql = "INSERT INTO board (id, name, subject, content, regist_day, hit, file_name, file_type, file_copied) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($con, $sql);
+        $hit = 0;
+        mysqli_stmt_bind_param($stmt, "sssssisss", $userid, $username, $subject, $content, $regist_day, $hit, $upfile_name, $file_ext, $copied_file_name);
+        $result = mysqli_stmt_execute($stmt);
     }
 
-    $sql = "INSERT INTO board (id, name, subject, content, regist_day, hit,  file_name, file_type, file_copied) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-     
-    if($stmt = mysqli_prepare($con, $sql)){
-        mysqli_stmt_bind_param($stmt, "sssssisss", $param_id, $param_name, $param_subject, $param_content, $param_regist_day, $param_hit, $param_file_name, $param_file_type, $param_file_copied);
-        
-        $param_id = $userid;
-        $param_name = $username;
-        $param_subject = $subject;
-        $param_content = $content;
-        $param_regist_day = $regist_day;
-        $param_hit = 0;
-        $param_file_name = $upfile_name;
-        $param_file_type = $file_ext;
-        $param_file_copied = $copied_file_name;
-
-        if(mysqli_stmt_execute($stmt)){
-            echo "mysql 쿼리 성공.";
-        } else{
-            echo "ERROR: Could not execute query: $sql. " . mysqli_error($con);
-        }
-    } else{
-        echo "ERROR: Could not prepare query: $sql. " . mysqli_error($con);
+    if (!$result) {
+        die("게시글 등록 실패: " . mysqli_error($con));
     }
-     
-    mysqli_stmt_close($stmt);
-    
+
+    // Point update also based on level (keeping it simple for now)
     $point_up = 100;
-
-    $sql = "UPDATE members SET point=point + ? WHERE id= ?";
-    if($stmt = mysqli_prepare($con, $sql)){
-        mysqli_stmt_bind_param($stmt, "is", $param_point_up, $param_userid);
-        $param_point_up = $point_up;
-        $param_userid = $userid;
-        if(mysqli_stmt_execute($stmt)){
-            echo "Points updated successfully.";
-        } else{
-            echo "ERROR: Could not execute query: $sql. " . mysqli_error($con);
-        }
-    } else{
-        echo "ERROR: Could not prepare query: $sql. " . mysqli_error($con);
+    if ($level >= 4) {
+        $sql = "UPDATE members SET point=point + ? WHERE id= ?";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "is", $point_up, $userid);
+        mysqli_stmt_execute($stmt);
+    } else {
+        $sql = "UPDATE members SET point=point + $point_up WHERE id= '$userid'";
+        mysqli_query($con, $sql);
     }
 
     mysqli_close($con);
@@ -120,8 +122,3 @@
        </script>
     ";
 ?>
-
-
-
-
-  
