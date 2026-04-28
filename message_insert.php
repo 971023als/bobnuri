@@ -7,12 +7,12 @@
     $content = $_POST['content'];
 	$subject = htmlspecialchars($subject, ENT_QUOTES);
 	$content = htmlspecialchars($content, ENT_QUOTES);
-	$regist_day = date("Y-m-d (H:i)");  // ?�재??'????????�????�??
+	$regist_day = date("Y-m-d (H:i)");  // 현재의 '년-월-일-시-분'을 저장
 
 	if(!$send_id) {
 		echo("
 			<script>
-			alert('로그?????�용??주세?? ');
+			alert('로그인 후 이용해 주세요! ');
 			history.go(-1)
 			</script>
 			");
@@ -28,18 +28,18 @@
 	{
 		$sql = "insert into message (send_id, rv_id, subject, content,  regist_day) ";
 		$sql .= "values('$send_id', '$rv_id', '$subject', '$content', '$regist_day')";
-		mysqli_query($con, $sql);  // $sql ???�?�된 명령 ?�행
+		mysqli_query($con, $sql);  // $sql 에 저장된 명령 실행
 	} else {
 		echo("
 			<script>
-			alert('?�신 ?�이?��? ?�못 ?�었?�니??');
+			alert('수신 아이디가 잘못 되었습니다!');
 			history.go(-1)
 			</script>
 			");
 		exit;
 	}
 
-	mysqli_close($con);                // DB ?�결 ?�기
+	mysqli_close($con);                // DB 연결 끊기
 
 	echo "
 	   <script>

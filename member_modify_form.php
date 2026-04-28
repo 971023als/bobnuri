@@ -10,7 +10,7 @@
 			if (!$userid )
 			{
 				echo("<script>
-						alert('로그?????�용?�주?�요!');
+						alert('로그인 후 이용해주세요!');
 						history.go(-1);
 						</script>
 					");
@@ -37,9 +37,9 @@
         <div id="main_content">
       		<div id="join_box">
           	<form  name="member_form" method="post" action="member_modify.php?id=<?=$userid?>">
-			    <h2>?�원 ?�보?�정</h2>
+			    <h2>회원 정보수정</h2>
     		    	<div class="form id">
-				        <div class="col1">?�이??/div>
+				        <div class="col1">아이디</div>
 				        <div class="col2">
 							<?=$userid?>
 				        </div>
@@ -47,28 +47,28 @@
 			       	<div class="clear"></div>
 
 			       	<div class="form">
-				        <div class="col1">비�?번호</div>
+				        <div class="col1">비밀번호</div>
 				        <div class="col2">
 							<input type="password" name="pass" value="<?=$pass?>">
 				        </div>
 			       	</div>
 			       	<div class="clear"></div>
 			       	<div class="form">
-				        <div class="col1">비�?번호 ?�인</div>
+				        <div class="col1">비밀번호 확인</div>
 				        <div class="col2">
 							<input type="password" name="pass_confirm" value="<?=$pass?>">
 				        </div>
 			       	</div>
 			       	<div class="clear"></div>
 			       	<div class="form">
-				        <div class="col1">?�름</div>
+				        <div class="col1">이름</div>
 				        <div class="col2">
 							<input type="text" name="name" value="<?=$name?>">
 				        </div>
 			       	</div>
 			       	<div class="clear"></div>
 			       	<div class="form email">
-				        <div class="col1">?�메??/div>
+				        <div class="col1">이메일</div>
 				        <div class="col2">
 							<input type="text" name="email1" value="<?=$email1?>">@<input
 							       type="text" name="email2" value="<?=$email2?>">

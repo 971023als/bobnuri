@@ -42,7 +42,7 @@ $stmt->execute();
 
 $_SESSION["userpoint"] = $newpoint;
 
-$stmt = $con->prepare("INSERT INTO oneday_class_buy(product_name, pin_number, id, order_check) VALUES (?, ?, ?, '구매?�료')");
+$stmt = $con->prepare("INSERT INTO oneday_class_buy(product_name, pin_number, id, order_check) VALUES (?, ?, ?, '구매완료')");
 
 for ($i = 0; $i < $count; $i++) {
     $value1 = rand(1000, 9999);
@@ -62,7 +62,7 @@ $con->close();
 
 echo "
       <script>
-    alert('?�용?�의 번호�?PIN번호�?보내?�렸?�니??');
+    alert('사용자의 번호로 PIN번호를 보내드렸습니다.');
           location.href = 'oneday_class_index.php';
       </script>
   ";

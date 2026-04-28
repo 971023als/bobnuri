@@ -1,4 +1,4 @@
-/* 게시??글?�기(board_form.php) */
+/* 게시판 글쓰기(board_form.php) */
 #board_box { position: relative; width: 800px; margin: 0 auto; }
 #board_box h3 { margin-top: 30px;	padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
 #board_form span { display: inline-block; }
@@ -12,7 +12,7 @@
 #board_box .buttons { text-align: right; margin: 20px 0 40px 0; }
 #board_box .buttons li { display: inline; }
 #board_box .buttons button { padding: 5px 10px; cursor: pointer; }
-/* 게시??목록보기(board_list.php) */
+/* 게시판 목록보기(board_list.php) */
 #board_list li { padding: 10px 0; border-bottom: solid 1px #dddddd; }
 #board_list span { display: inline-block; text-align: center;}
 #board_list .col1 { width: 80px; }
@@ -23,7 +23,7 @@
 #board_list .col6 { width: 40px; }
 #page_num {	text-align: center;	margin: 30px 0 }
 #page_num li { display: inline; }
-/* 게시???�용보기(board_view.php) */
+/* 게시판 내용보기(board_view.php) */
 #board_box { width: 800px; margin: 0 auto; }
 #board_box .title { margin-top: 30px; padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
 #view_content li:nth-child(1) {	padding: 15px; border-bottom: solid 1px #aaaaaa; }

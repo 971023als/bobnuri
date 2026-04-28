@@ -1,4 +1,4 @@
-/* 게시??글?�기(product_form.php) */
+/* 게시판 글쓰기(product_form.php) */
 #product_box { position: relative; width: 800px; margin: 0 auto; }
 #product_box h3 { margin-top: 30px;	padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
 #product_form span { display: inline-block; }
@@ -12,7 +12,7 @@
 #product_box .buttons { text-align: right; margin: 20px 0 40px 0; }
 #product_box .buttons li { display: inline; }
 #product_box .buttons button { padding: 5px 10px; cursor: pointer; }
-/* 게시??목록보기(product_list.php) */
+/* 게시판 목록보기(product_list.php) */
 #product_list li { padding:10px 0; border-bottom: solid 1px #dddddd; }
 #product_list span { display: inline-block; vertical-align:-webkit-baseline-middle; text-align: center;}
 #product_list .col1 { width: 70px; }
@@ -22,7 +22,7 @@
 #product_list .col5 { width: 130px; }
 #page_num {	text-align: center;	margin: 30px 0 }
 #page_num li { display: inline; }
-/* 게시???�용보기(product_view.php) */
+/* 게시판 내용보기(product_view.php) */
 #product_box { width: 800px; margin: 0 auto; }
 #product_box .title { margin-top: 30px; padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
 #view_content li:nth-child(1) {	padding: 15px; border-bottom: solid 1px #aaaaaa; }

@@ -9,13 +9,13 @@
 function validateLoginForm(form) {
   const requiredFields = ['id', 'pass'];
   const fieldNames = {
-    'id': '?�이??,
-    'pass': '비�?번호'
+    'id': '아이디',
+    'pass': '비밀번호'
   };
 
   for (let field of requiredFields) {
     if (!form[field].value) {
-      alert(`${fieldNames[field]}�??�력?�세??`);
+      alert(`${fieldNames[field]}를 입력하세요!`);
       form[field].focus();
       return false;
     }
@@ -26,32 +26,32 @@ function validateLoginForm(form) {
 function validateRegisterForm(form) {
   const requiredFields = ['id', 'pass', 'pass_confirm', 'name', 'email1', 'email2', 'address'];
   const fieldNames = {
-    'id': '?�이??,
-    'pass': '비�?번호',
-    'pass_confirm': '비�?번호 ?�인',
-    'name': '?�름',
-    'email1': '?�메??',
-    'email2': '?�메??',
+    'id': '아이디',
+    'pass': '비밀번호',
+    'pass_confirm': '비밀번호 확인',
+    'name': '이름',
+    'email1': '이메일1',
+    'email2': '이메일2',
     'address': '주소'
   };
 
   for (let field of requiredFields) {
     if (!form[field].value) {
-      alert(`${fieldNames[field]}�??�력?�세??`);
+      alert(`${fieldNames[field]}를 입력하세요!`);
       form[field].focus();
       return false;
     }
   }
 
   if (form['pass'].value !== form['pass_confirm'].value) {
-    alert("비�?번호가 ?�치?��? ?�습?�다.\n?�시 ?�력??주세??");
+    alert("비밀번호가 일치하지 않습니다.\n다시 입력해 주세요!");
     form['pass'].focus();
     form['pass'].select();
     return false;
   }
 
   if (form['checked_id'].value !== "y") {
-    alert("중복?�인???�주?�요");
+    alert("중복확인을 해주세요");
     form['id'].focus();
     form['id'].select();
     return false;
@@ -168,10 +168,10 @@ $(function() {
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="login_form.php" class="active" id="login-form-link">로그??/a>
+                            <a href="login_form.php" class="active" id="login-form-link">로그인</a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="member_form.php" id="register-form-link">?�원가??/a>
+                            <a href="member_form.php" id="register-form-link">회원가입</a>
                         </div>
                     </div>
                     <hr>
@@ -181,19 +181,19 @@ $(function() {
                         <div class="col-lg-12">
                             <form id="login-form" name="login_form" method="post" action="login.php" role="form" style="display: block;">
                                 <div class="form-group">
-                                    <input type="text" name="id" id="userID" tabindex="1" class="form-control" placeholder="?�이?? value="">
+                                    <input type="text" name="id" id="userID" tabindex="1" class="form-control" placeholder="아이디" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="pass" id="password" tabindex="2" class="form-control" placeholder="비�?번호">
+                                    <input type="password" name="pass" id="password" tabindex="2" class="form-control" placeholder="비밀번호">
                                 </div>
                                 <div class="form-group text-center">
                                     <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                    <label for="remember">?�이??기억?�기</label>
+                                    <label for="remember">아이디 기억하기</label>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="button" onclick="check_login()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="로그??>
+                                            <input type="button" onclick="check_login()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="로그인">
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@ $(function() {
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center">
-                                                <a href="find_password_form.php" tabindex="5" class="forgot-password">비�?번호�??�어버리?�나??</a>
+                                                <a href="find_password_form.php" tabindex="5" class="forgot-password">비밀번호를 잊어버리셨나요?</a>
                                             </div>
                                         </div>
                                     </div>

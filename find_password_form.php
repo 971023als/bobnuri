@@ -9,21 +9,21 @@ function check_user()
 {
    if (!document.find_password_form.id.value)
    {
-       alert("?�이?��? ?�력?�세??");
+       alert("아이디를 입력하세요!");
        document.find_password_form.id.focus();
        return;
    }
 
    if (!document.find_password_form.name.value)
    {
-       alert("?�름???�력?�세??");
+       alert("이름을 입력하세요!");
        document.find_password_form.name.focus();
        return;
    }
 
    if (!document.find_password_form.address.value)
    {
-       alert("주소�??�력?�세??");
+       alert("주소를 입력하세요!");
        document.find_password_form.address.focus();
        return;
    }
@@ -52,15 +52,15 @@ function reset_all()
         <div id="main_content">
       		<div id="join_box">
           	<form  name="find_password_form" method="post" action="find_password.php">
-			    <h2>비�?번호 찾기</h2>
+			    <h2>비밀번호 찾기</h2>
     		    	<div class="form id">
-				        <div class="col1">?�이??/div>
+				        <div class="col1">아이디</div>
 				        <div class="col2"><input type="text" name="id" value="">
 				        </div>
 			       	</div>
 
 			       	<div class="form">
-				        <div class="col1">?�름</div>
+				        <div class="col1">이름</div>
 				        <div class="col2">
 							<input type="text" name="name" value="">
 				        </div>
@@ -77,7 +77,7 @@ function reset_all()
 			       	<div class="bottom_line"> </div>
 			       	<div class="buttons">
 	                	<input type="button" value="찾아보기" onclick="check_user()">&nbsp;
-                  		<input type="button" value="취소?�기" onclick="reset_all()">
+                  		<input type="button" value="취소하기" onclick="reset_all()">
 	           		</div>
            	</form>
         	</div>

@@ -1,57 +1,57 @@
  function check_member()
   {
      if (!document.member_form.id.value) {
-         alert("?�이?��? ?�력?�세??");
+         alert("아이디를 입력하세요!");
          document.member_form.id.focus();
          return;
      }
 
      if (!document.member_form.pass.value) {
-         alert("비�?번호�??�력?�세??");
+         alert("비밀번호를 입력하세요!");
          document.member_form.pass.focus();
          return;
      }
 
      if (!document.member_form.pass_confirm.value) {
-         alert("비�?번호?�인???�력?�세??");
+         alert("비밀번호확인을 입력하세요!");
          document.member_form.pass_confirm.focus();
          return;
      }
 
      if (!document.member_form.name.value) {
-         alert("?�름???�력?�세??");
+         alert("이름을 입력하세요!");
          document.member_form.name.focus();
          return;
      }
 
      if (!document.member_form.email1.value) {
-         alert("?�메??주소�??�력?�세??");
+         alert("이메일 주소를 입력하세요!");
          document.member_form.email1.focus();
          return;
      }
 
      if (!document.member_form.email2.value) {
-         alert("?�메??주소�??�력?�세??");
+         alert("이메일 주소를 입력하세요!");
          document.member_form.email2.focus();
          return;
      }
 
      if (!document.member_form.address.value) {
-         alert("주소�??�력?�세??");
+         alert("주소를 입력하세요!");
          document.member_form.name.focus();
          return;
      }
 
      if (document.member_form.pass.value !=
            document.member_form.pass_confirm.value) {
-         alert("비�?번호가 ?�치?��? ?�습?�다.\n?�시 ?�력??주세??");
+         alert("비밀번호가 일치하지 않습니다.\n다시 입력해 주세요!");
          document.member_form.pass.focus();
          document.member_form.pass.select();
          return;
      }
 
      if (document.member_form.checked_id.value !="y") {
-         alert("중복?�인???�주?�요");
+         alert("중복확인을 해주세요");
          document.member_form.pass.focus();
          document.member_form.pass.select();
          return;
@@ -69,12 +69,12 @@
     }
 
     if (!formValid) {
-        alert("개인?�보 ?�집???�???�의가 ?�요?�니??);
+        alert("개인정보 수집에 대한 동의가 필요합니다");
         return;
     }
 
     if (document.member_form.agree.value != "yes") {
-        alert("개인?�보 ?�집???�???�의가 ?�요?�니??);
+        alert("개인정보 수집에 대한 동의가 필요합니다");
         return;
     }
 
@@ -97,14 +97,14 @@
   {
       if (!document.login_form.id.value)
       {
-          alert("?�이?��? ?�력?�세??);
+          alert("아이디를 입력하세요");
           document.login_form.id.focus();
           return;
       }
 
       if (!document.login_form.pass.value)
       {
-          alert("비�?번호�??�력?�세??);
+          alert("비밀번호를 입력하세요");
           document.login_form.pass.focus();
           return;
       }

@@ -4,13 +4,13 @@
   function check_input() {
       if (!document.message_form.subject.value)
       {
-          alert("?�목???�력?�세??");
+          alert("제목을 입력하세요!");
           document.message_form.subject.focus();
           return;
       }
       if (!document.message_form.content.value)
       {
-          alert("?�용???�력?�세??");    
+          alert("내용을 입력하세요!");    
           document.message_form.content.focus();
           return;
       }
@@ -21,7 +21,7 @@
 <body> 
    	<div id="message_box">
 	    <h3 id="write_title">
-	    		?��? 쪽�? 보내�?
+	    		답변 쪽지 보내기
 		</h3>
 <?php
 	$num  = $_GET["num"];
@@ -52,25 +52,25 @@
 	    	<div id="write_msg">
 	    	    <ul>
 				<li>
-					<span class="col1">보내???�람 : </span>
+					<span class="col1">보내는 사람 : </span>
 					<span class="col2"><?=$userid?></span>
 				</li>	
 				<li>
-					<span class="col1">?�신 ?�이??: </span>
+					<span class="col1">수신 아이디 : </span>
 					<span class="col2"><?=$send_name?>(<?=$send_id?>)</span>
 				</li>	
 	    		<li>
-	    			<span class="col1">?�목 : </span>
+	    			<span class="col1">제목 : </span>
 	    			<span class="col2"><input name="subject" type="text" value="<?=$subject?>"></span>
 	    		</li>	    	
 	    		<li id="text_area">	
-	    			<span class="col1">글 ?�용 : </span>
+	    			<span class="col1">글 내용 : </span>
 	    			<span class="col2">
 	    				<textarea name="content"style="height:130px;font-size:20px;"><?=$content?></textarea>
 	    			</span>
 	    		</li>
 	    	    </ul>
-	    	    <button type="button" onclick="check_input()">보내�?/button>
+	    	    <button type="button" onclick="check_input()">보내기</button>
 	    	</div>
 	    </form>
 	</div> <!-- message_box -->

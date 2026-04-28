@@ -1,4 +1,4 @@
-<meta charset='utf-8'>
+ï»¿<meta charset='utf-8'>
 
 <?php
 
@@ -17,7 +17,7 @@
 
 
 
-	mysqli_close($con);                // DB ¿¬°á ²÷±â
+	mysqli_close($con);                // DB ì—°ê²° ëŠê¸°
 
 
 

@@ -1,14 +1,2 @@
-# Database credentials
-.env
 
-# PHP / Apache binaries (if not needed in repo)
-*.exe
-*.dll
-windowsXamppPhp/
-
-# Project specific configs
-bobnuri_apache.conf
-
-# OS generated files
-.DS_Store
-Thumbs.db
+php

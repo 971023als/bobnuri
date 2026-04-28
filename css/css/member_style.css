@@ -123,8 +123,8 @@ table td {
 }
 
 table th {
-  border: 2px solid black;  /* ?�의 ?�께�?2px�? ?�상??검?�?�으�??�정?�니?? */
-  font-weight: bold;  /* 글?��? 굵게 만듭?�다. */
+  border: 2px solid black;  /* 선의 두께를 2px로, 색상을 검은색으로 설정합니다. */
+  font-weight: bold;  /* 글자를 굵게 만듭니다. */
 }
 
 
@@ -138,9 +138,9 @@ tbody tr + tr {
 }
 
 .center-text h3, .center-text h4, .center-text p {
-  margin-bottom: 30px; /* ?�래�??�백 ?�정 */
+  margin-bottom: 30px; /* 아래쪽 여백 설정 */
 }
 
 .center-text h4 {
-  margin-top: 30px; /* ?�쪽 ?�백 ?�정 */
+  margin-top: 30px; /* 위쪽 여백 설정 */
 }

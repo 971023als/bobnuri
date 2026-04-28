@@ -44,7 +44,7 @@
 <?php
     if (!$userid) {
         echo("<script>
-            alert('로그?????�용?�주?�요!');
+            alert('로그인 후 이용해주세요!');
             history.go(-1);
             </script>"
         );
@@ -65,7 +65,7 @@
                 if(file_exists($file_path)) {
                     echo "<img src='./data/$real_name' alt='Attached Image'><br><br><br>";
                 } else {
-                    echo "?��?지�?찾을 ???�습?�다.<br><br><br>";
+                    echo "이미지를 찾을 수 없습니다.<br><br><br>";
                 }
             }
             
@@ -82,10 +82,10 @@
                     </script>
                     </select><br><br>
 
-                <input type="submit" value="구매?�기"><br><br>
+                <input type="submit" value="구매하기"><br><br>
                   </tr>
                   <tr>
-        <button type="button" onclick="location.href='oneday_class_index.php'"><b>목록?�로</b></button>
+        <button type="button" onclick="location.href='oneday_class_index.php'"><b>목록으로</b></button>
         </tr>
         <?php
             if ($userlevel == 100) {
@@ -93,13 +93,13 @@
                 $page = $_GET["page"] ?? "";
         ?>
         <tr>
-        <button type="button" onclick="location.href='oneday_class_modify_form.php?num=<?=$num?>'"><b>?�정</b></button> 
+        <button type="button" onclick="location.href='oneday_class_modify_form.php?num=<?=$num?>'"><b>수정</b></button> 
         </tr>
         <tr>
-        <button type="button" onclick="location.href='oneday_class_delete.php?num=<?=$num?>'"><b>??��</b></button>  
+        <button type="button" onclick="location.href='oneday_class_delete.php?num=<?=$num?>'"><b>삭제</b></button>  
         </tr>
         <tr>
-        <button type="button" onclick="location.href='oneday_class_insert_form.php'"><b>추�?</b></button>
+        <button type="button" onclick="location.href='oneday_class_insert_form.php'"><b>추가</b></button>
         </tr>
         <?php
             }
