@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: bobnuri_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: sample
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: BoBnuri
+      MYSQL_PASSWORD: nuriBoB1234!
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+
+  app:
+    build: .
+    container_name: bobnuri_app
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - DB_HOST=db
+      - DB_USER=BoBnuri
+      - DB_PASSWORD=nuriBoB1234!
+      - DB_NAME=sample
+      - SECURITY_LEVEL=1 # Options: 1 to 5
+    depends_on:
+      - db
