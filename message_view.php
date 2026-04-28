@@ -30,14 +30,14 @@
 	$msg_name = $record["name"];
 
 	if ($mode=="send")	    	
-	    echo "송신 쪽지함 ";
+	    echo "?�신 쪽�???";
 	else
-		echo "수신 쪽지함 ";
+		echo "?�신 쪽�???";
 ?>
 		</h3>
 	    <ul id="view_content">
 			<li>
-				<span class="col1"><b>제목 :</b> <?=$subject?></span>
+				<span class="col1"><b>?�목 :</b> <?=$subject?></span>
 				<span class="col2"><?=$msg_name?> | <?=$regist_day?></span>
 			</li>
 			<li>
@@ -45,10 +45,10 @@
 			</li>		
 	    </ul>
 	    <ul class="buttons">
-				<li><button onclick="location.href='./message_box.php?mode=rv'">수신 쪽지함</button></li>
-				<li><button onclick="location.href='./message_box.php?mode=send'">송신 쪽지함</button></li>
-				<li><button onclick="location.href='./message_response_form.php?num=<?=$num?>'">답변 쪽지</button></li>
-				<li><button onclick="location.href='./message_delete.php?num=<?=$num?>&mode=<?=$mode?>'">삭제</button></li>
+				<li><button onclick="location.href='./message_box.php?mode=rv'">?�신 쪽�???/button></li>
+				<li><button onclick="location.href='./message_box.php?mode=send'">?�신 쪽�???/button></li>
+				<li><button onclick="location.href='./message_response_form.php?num=<?=$num?>'">?��? 쪽�?</button></li>
+				<li><button onclick="location.href='./message_delete.php?num=<?=$num?>&mode=<?=$mode?>'">??��</button></li>
 		</ul>
 	</div> <!-- message_box -->
 </section> 

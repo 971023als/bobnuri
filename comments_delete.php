@@ -14,9 +14,9 @@ if ($nums) {
     $result = $stmt->execute();
 
     if ($result) {
-        echo "<script>alert('ì‚­ì œ ì™„ë£Œ.'); location.href='board_view.php?num={$num}&page={$page}';</script>";
+        echo "<script>alert('?? œ ?„ë£Œ.'); location.href='board_view.php?num={$num}&page={$page}';</script>";
     } else {
-        echo "<script>alert('ì‚­ì œ ì‹¤íŒ¨.'); history.back();</script>";
+        echo "<script>alert('?? œ ?¤íŒ¨.'); history.back();</script>";
     }
 } else {
     echo "<script>alert('Invalid request.'); history.back();</script>";

@@ -1,33 +1,36 @@
-CREATE TABLE board(
- num int not null auto_increment,
- id char(15) NOT null,
- name char (10)NOT null,
- subject char(200) Not null,
- content text NOT null,
- regist_day char(20) NOT null,
- hit int NOT null,
- file_name char(40),
- file_type char(40),
- file_copied char(40),
- primary key(num)
+-- BoBnuri Database Initialization
+
+CREATE DATABASE IF NOT EXISTS sample;
+USE sample;
+
+CREATE TABLE board (
+  num int not null auto_increment,
+  id char(15) NOT null,
+  name char (10)NOT null,
+  subject char(200) Not null,
+  content text NOT null,
+  regist_day char(20) NOT null,
+  hit int NOT null,
+  file_name char(40),
+  file_type char(40),
+  file_copied char(40),
+  primary key(num)
 ); 
 
-
 CREATE TABLE members (
- num int NOT null auto_increment,
- id char(15) NOT null,
- pass char(15) NOT null,
- name char(10) NOT null,
- email char(80),
-address varchar(30) not null,
- regist_day char(20),
- level int,
- point int,
- primary key(num)
-  );
+  num int NOT null auto_increment,
+  id char(15) NOT null,
+  pass varchar(255) NOT null, -- Expanded for password hashes
+  name char(10) NOT null,
+  email char(80),
+  address varchar(30) not null,
+  regist_day char(20),
+  level int,
+  point int,
+  primary key(num)
+);
 
-
-CREATE TABLE message(  
+CREATE TABLE message (  
   num int NOT null auto_increment, 
   send_id char(20), 
   rv_id char(20) NOT null, 
@@ -35,8 +38,7 @@ CREATE TABLE message(
   content text NOT null, 
   regist_day char(20), 
   primary key(num) 
-  );
-
+);
 
 CREATE TABLE point_mall (
   num int not null auto_increment,
@@ -47,7 +49,6 @@ CREATE TABLE point_mall (
   file_copied char(40)  not null,
   primary key (num)
 ); 
-
 
 INSERT INTO `point_mall` (`num`, `product_name`, `point`, `file_name`, `file_type`, `file_copied`) VALUES
 (1, 'Î°?ç∞ÏßÄÎ•òÏÉÅ?àÍ∂å 10ÎßåÏõêÍ∂?, 105000, 'Î°?ç∞.PNG', 'image/png', '2020_11_21_09_38_13.PNG'),
@@ -69,7 +70,6 @@ INSERT INTO `point_mall` (`num`, `product_name`, `point`, `file_name`, `file_typ
 (17, 'CJÍ∏∞ÌîÑ?∏Ïπ¥??2ÎßåÏõêÍ∂?, 20000, 'cj 20000.PNG', 'image/png', '2020_11_21_09_59_44.PNG'),
 (18, 'CJÍ∏∞ÌîÑ?∏Ïπ¥??3ÎßåÏõêÍ∂?, 30000, 'cj 30000.PNG', 'image/png', '2020_11_21_09_59_59.PNG');
 
-
 CREATE TABLE point_mall_buy (
   num int not null auto_increment,
   product_name char(255) not null,
@@ -77,4 +77,8 @@ CREATE TABLE point_mall_buy (
   id char(15) not null,
   order_check char(20) not null,
   PRIMARY KEY (num)
-) ;
+);
+
+-- Admin account (default: admin / admin1234!)
+INSERT INTO members (id, pass, name, email, address, regist_day, level, point) 
+VALUES ('admin', 'admin1234!', 'Í¥ÄÎ¶¨Ïûê', 'admin@bobnuri.ac.kr', '?úÏö∏?πÎ≥Ñ??, '2023-01-01 (00:00)', 9, 1000000);

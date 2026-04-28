@@ -1,45 +1,50 @@
 <?php
-    require('db.php');
+require('security_config.php');
+require('db.php');
 
-    $id   = mysqli_real_escape_string($con, $_POST["id"]);
-    $pass = mysqli_real_escape_string($con, $_POST["pass"]);
-    $name = mysqli_real_escape_string($con, $_POST["name"]);
-    $email1  = mysqli_real_escape_string($con, $_POST["email1"]);
-    $email2  = mysqli_real_escape_string($con, $_POST["email2"]);
-    $address  = mysqli_real_escape_string($con, $_POST["address"]);
+$id = $_POST["id"];
+$pass = $_POST["pass"];
+$name = $_POST["name"];
+$email1 = $_POST["email1"];
+$email2 = $_POST["email2"];
+$address = $_POST["address"];
 
-    // Name must be 6 characters or less
-    if (mb_strlen($name) > 6) {
-        die("이름은 6자 미만로 입력해 주세요.");
+$level = get_security_level();
+
+if (mb_strlen($name) > 6) die("Name too long");
+$email = $email1."@".$email2;
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) die("Invalid email");
+$regist_day = date("Y-m-d (H:i)");
+
+if ($level <= 2) {
+    $pass_to_store = $pass;
+} elseif ($level == 3) {
+    $pass_to_store = md5($pass);
+} else {
+    if ($level >= 4 && !preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{10,}$/", $pass)) {
+        die("Password too weak");
     }
+    $pass_to_store = password_hash($pass, PASSWORD_DEFAULT);
+}
 
-    $email = $email1."@".$email2;
-    
-    // Check if email is valid
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("이메일 형식이 올바르지 않습니다.");
-    }
-
-    $regist_day = date("Y-m-d (H:i)");
-
-    // 비밀번호 유효성 검사: 최소 10자리, 대소문자, 숫자, 특수문자를 포함하고 있는지 확인
-    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{10,}$/", $pass)) {
-        die("비밀번호는 최소 10자리, 대소문자, 숫자, 특수문자를 포함해야 합니다!");
-    }
-    
-    $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) ";
-    $sql .= "values('$id', '$pass', '$name', '$email', '$address', '$regist_day', 1, 0)";
-
+if ($level <= 1) {
+    $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) values('$id', '$pass_to_store', '$name', '$email', '$address', '$regist_day', 1, 0)";
     $result = mysqli_query($con, $sql);
-    if (!$result) {
-        die('SQL 쿼리 실행에 실패했습니다: ' . mysqli_error($con));
-    }
+} elseif ($level <= 3) {
+    $id = mysqli_real_escape_string($con, $id);
+    $name = mysqli_real_escape_string($con, $name);
+    $email = mysqli_real_escape_string($con, $email);
+    $address = mysqli_real_escape_string($con, $address);
+    $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) values('$id', '$pass_to_store', '$name', '$email', '$address', '$regist_day', 1, 0)";
+    $result = mysqli_query($con, $sql);
+} else {
+    $sql = "insert into members(id, pass, name, email, address, regist_day, level, point) values(?, ?, ?, ?, ?, ?, 1, 0)";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "ssssss", $id, $pass_to_store, $name, $email, $address, $regist_day);
+    $result = mysqli_stmt_execute($stmt);
+}
 
-    mysqli_close($con);
-
-    echo "
-          <script>
-              location.href = 'index.php';
-          </script>
-      ";
+if (!$result) die("Insert failed: " . mysqli_error($con));
+mysqli_close($con);
+echo "<script>location.href = 'index.php';</script>";
 ?>

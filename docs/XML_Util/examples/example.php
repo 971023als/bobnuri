@@ -251,10 +251,10 @@
      */
     $tag = array(
         'qname'      => 'foo',
-        'attributes' => array('key' => 'value', 'argh' => 'tütü'),
+        'attributes' => array('key' => 'value', 'argh' => 't??),
         'content'    => 
             'Also XHTML-tags can be created '
-            . 'and HTML entities can be replaced Ä ä Ü ö <>.'
+            . 'and HTML entities can be replaced ????<>.'
     );
 
     print 'creating a tag with HTML entities:<br>';

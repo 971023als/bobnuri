@@ -8,13 +8,13 @@
 function check_product() {
     if (!document.product_form.product_name.value)
     {
-        alert("상품명을 입력하세요!");
+        alert("?�품명을 ?�력?�세??");
         document.product_form.product_name.focus();
         return;
     }
     if (!document.product_form.point.value)
     {
-        alert("포인트을 입력하세요!");
+        alert("?�인?�을 ?�력?�세??");
         document.product_form.point.focus();
         return;
     }
@@ -34,7 +34,7 @@ if ( $userlevel != 100 )
 {
     echo("
                 <script>
-                alert('관리자가아닙니다!');
+                alert('관리자가?�닙?�다!');
                 history.go(-1)
                 </script>
     ");
@@ -43,7 +43,7 @@ if ( $userlevel != 100 )
 	if (!$userid )
 	{
 		echo("<script>
-				alert('로그인 후 이용해주세요!');
+				alert('로그?????�용?�주?�요!');
 				history.go(-1);
 				</script>
 			");
@@ -53,7 +53,7 @@ if ( $userlevel != 100 )
 <section>
    	<div id="product_box">
 	    <h3 id="product_title">
-	    		원데이클래스 수정
+	    		?�데?�클?�스 ?�정
 		</h3>
 <?php
 	$num  = $_GET["num"];
@@ -70,20 +70,20 @@ if ( $userlevel != 100 )
 	    <form  name="product_form" method="post" action="oneday_class_modify.php?num=<?=$num?>&page=<?=$page?>" enctype="multipart/form-data">
         <ul id="product_form">
          <li>
-           <span class="col1">상품명 : </span>
+           <span class="col1">?�품�?: </span>
            <span class="col2"><input name="product_name" type="text" value="<?=$product_name?>"></span>
          </li>
          <li>
-           <span class="col1">포인트 : </span>
+           <span class="col1">?�인??: </span>
            <span class="col2"><input name="point" type="text" value="<?=$point?>"></span>
          </li>
          <li>
-			        <span class="col1"> 첨부 파일 : </span>
+			        <span class="col1"> 첨�? ?�일 : </span>
 			        <span class="col2"><input type="file" name="upfile"></span>
 			    </li>
            </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_product()">수정하기</button></li>
+				<li><button type="button" onclick="check_product()">?�정?�기</button></li>
 				<li><button type="button" onclick="location.href='oneday_class_index.php'">목록</button></li>
 			</ul>
 	    </form>
