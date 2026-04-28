@@ -1,4 +1,5 @@
 <?php
+    require_once('security_config.php');
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -88,6 +89,21 @@
                                     <li><a href="point_mall_index.php">상품권</a></li>
                     </ul>
                 </li>
+                <li><a href="#" style="color: #d63031;">보안 레벨 [Lv. <?php echo get_security_level(); ?>]</a>
+                    <ul class="header__menu__dropdown">
+                        <li>
+                            <form action="change_security.php" method="post">
+                                <select name="level" onchange="this.form.submit()" style="width: 100%; padding: 10px;">
+                                    <option value="1" <?php if(get_security_level()==1) echo "selected"; ?>>Level 1</option>
+                                    <option value="2" <?php if(get_security_level()==2) echo "selected"; ?>>Level 2</option>
+                                    <option value="3" <?php if(get_security_level()==3) echo "selected"; ?>>Level 3</option>
+                                    <option value="4" <?php if(get_security_level()==4) echo "selected"; ?>>Level 4</option>
+                                    <option value="5" <?php if(get_security_level()==5) echo "selected"; ?>>Level 5</option>
+                                </select>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -169,6 +185,21 @@
                                     <li><a href="board_list.php">민원목록</a></li>
                                     <li><a href="oneday_class_index.php">원데이클래스</a></li>
                                     <li><a href="point_mall_index.php">상품권</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" style="color: #d63031;">보안 레벨 [Lv. <?php echo get_security_level(); ?>]</a>
+                                <ul class="header__menu__dropdown" style="width: 200px;">
+                                    <li>
+                                        <form action="change_security.php" method="post" id="securityForm">
+                                            <select name="level" onchange="this.form.submit()" style="width: 100%; padding: 10px; border: none; background: #f5f5f5;">
+                                                <option value="1" <?php if(get_security_level()==1) echo "selected"; ?>>Level 1 (Beginner)</option>
+                                                <option value="2" <?php if(get_security_level()==2) echo "selected"; ?>>Level 2 (Easy)</option>
+                                                <option value="3" <?php if(get_security_level()==3) echo "selected"; ?>>Level 3 (Medium)</option>
+                                                <option value="4" <?php if(get_security_level()==4) echo "selected"; ?>>Level 4 (Hard)</option>
+                                                <option value="5" <?php if(get_security_level()==5) echo "selected"; ?>>Level 5 (Secure)</option>
+                                            </select>
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
