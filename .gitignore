@@ -10,3 +10,17 @@ ssl/
 
 # local backup files
 *.bak.*
+
+# extra local secret / cert artifacts
+.env.*
+!.env.example
+certs/
+letsencrypt/
+*.crt
+*.csr
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.log
+auto_git_push.log
