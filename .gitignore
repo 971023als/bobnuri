@@ -2,3 +2,11 @@
 *.log
 mysql_data/
 php
+
+# local SSL certificates / secrets
+ssl/
+*.key
+*.pem
+
+# local backup files
+*.bak.*

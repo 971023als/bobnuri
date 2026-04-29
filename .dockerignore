@@ -1,0 +1,17 @@
+.git
+.env
+
+*.dll
+*.exe
+*.bat
+*.lib
+
+php.ini
+php.ini-development
+php.ini-production
+
+windowsXamppPhp/
+tests/
+CompatInfo/
+pear/
+deplister.exe

@@ -1,15 +1,16 @@
 FROM php:8.2-apache
 
-# Install mysqli extension
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN docker-php-ext-install mysqli pdo pdo_mysql \
+    && docker-php-ext-enable mysqli pdo_mysql \
+    && a2enmod rewrite \
+    && echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf \
+    && a2enconf servername
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Copy project files
 COPY . /var/www/html/
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/
+RUN rm -f /var/www/html/php.ini \
+          /var/www/html/php.ini-development \
+          /var/www/html/php.ini-production \
+    && chown -R www-data:www-data /var/www/html/
 
 EXPOSE 80

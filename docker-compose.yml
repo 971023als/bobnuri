@@ -7,6 +7,7 @@ services:
     container_name: apache_proxy
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - app
     restart: unless-stopped
